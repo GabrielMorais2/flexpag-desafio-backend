@@ -4,17 +4,21 @@ import com.flexpag.paymentscheduler.Model.PaymentScheduleModel;
 import com.flexpag.paymentscheduler.Repository.PaymentScheduleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 
-@Configuration
-public class Config implements CommandLineRunner {
+@Component
+public class DataInitializer implements CommandLineRunner {
+
+    private final PaymentScheduleRepository paymentRepository;
 
     @Autowired
-    private PaymentScheduleRepository paymentRepository;
+    public DataInitializer(PaymentScheduleRepository paymentRepository) {
+        this.paymentRepository = paymentRepository;
+    }
 
     @Override
     public void run(String... args) throws Exception {

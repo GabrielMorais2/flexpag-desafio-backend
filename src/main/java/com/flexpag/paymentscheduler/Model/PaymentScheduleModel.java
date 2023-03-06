@@ -3,12 +3,11 @@ package com.flexpag.paymentscheduler.Model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.flexpag.paymentscheduler.Model.Enum.PaymentStatus;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -17,26 +16,27 @@ import java.time.LocalDateTime;
 @Entity(name = "payment")
 @Table(name = "payments")
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 public class PaymentScheduleModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotNull(message = "date cannot be empty")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
     private LocalDateTime date;
-    private BigDecimal payment;
+
+    @DecimalMin("0.0")
+    @NotNull(message = "Amount cannot be empty")
+    private BigDecimal amount;
 
     @Enumerated(EnumType.STRING)
-    private PaymentStatus paymentStatus;
+    private PaymentStatus paymentStatus = PaymentStatus.PENDING;
 
-    public PaymentScheduleModel() {
-        setPaymentStatus(PaymentStatus.PENDING);
-    }
-
-    public PaymentScheduleModel(LocalDateTime date, BigDecimal payment) {
+    public PaymentScheduleModel(LocalDateTime date, BigDecimal amount) {
         this.date = date;
-        this.payment = payment;
-        this.paymentStatus = PaymentStatus.PENDING;
+        this.amount = amount;
     }
 }
