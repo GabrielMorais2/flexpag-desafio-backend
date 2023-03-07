@@ -1,5 +1,6 @@
 package com.flexpag.paymentscheduler.Config;
 
+import com.flexpag.paymentscheduler.Model.Enum.PaymentStatus;
 import com.flexpag.paymentscheduler.Model.PaymentScheduleModel;
 import com.flexpag.paymentscheduler.Repository.PaymentScheduleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +26,9 @@ public class DataInitializer implements CommandLineRunner {
         PaymentScheduleModel payment1 = new PaymentScheduleModel(LocalDateTime.now().plusDays(3), new BigDecimal(300));
         PaymentScheduleModel payment2 = new PaymentScheduleModel(LocalDateTime.now().plusDays(5), new BigDecimal(500));
         PaymentScheduleModel payment3 = new PaymentScheduleModel(LocalDateTime.now().plusDays(7), new BigDecimal(700));
+        PaymentScheduleModel payment4 = new PaymentScheduleModel(PaymentStatus.PAID, LocalDateTime.now().plusDays(8), new BigDecimal(800));
 
-        paymentRepository.saveAll(Arrays.asList(payment1, payment2, payment3));
+        paymentRepository.saveAll(Arrays.asList(payment1, payment2, payment3, payment4));
     }
 
 }

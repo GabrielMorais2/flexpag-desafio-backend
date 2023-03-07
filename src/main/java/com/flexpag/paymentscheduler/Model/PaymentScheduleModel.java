@@ -25,7 +25,7 @@ public class PaymentScheduleModel {
     private Long id;
 
     @NotNull(message = "date cannot be empty")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "GMT")
     private LocalDateTime date;
 
     @DecimalMin("0.0")
@@ -36,6 +36,11 @@ public class PaymentScheduleModel {
     private PaymentStatus paymentStatus = PaymentStatus.PENDING;
 
     public PaymentScheduleModel(LocalDateTime date, BigDecimal amount) {
+        this.date = date;
+        this.amount = amount;
+    }
+    public PaymentScheduleModel(PaymentStatus status, LocalDateTime date, BigDecimal amount) {
+        this.paymentStatus = status;
         this.date = date;
         this.amount = amount;
     }

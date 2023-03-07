@@ -16,12 +16,10 @@ import java.util.List;
 public class PaymentScheduleController {
 
     private final PaymentScheduleService paymentService;
-
     @Autowired
     public PaymentScheduleController(PaymentScheduleService paymentService) {
         this.paymentService = paymentService;
     }
-
     /*
      * Encontra todos os pagamentos podendo ser filtrado por status ou não.
      *
@@ -34,7 +32,6 @@ public class PaymentScheduleController {
 
         return payments.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(payments);
     }
-
     /*
      * Encontra um pagamento pelo Id
      *
@@ -47,12 +44,11 @@ public class PaymentScheduleController {
 
         return ResponseEntity.ok(payment);
     }
-
     /*
      * adiciona um novo pagamento.
      *
-     * @param payment the PaymentScheduleModel object to create
-     * @return a ResponseEntity containing the created PaymentScheduleModel object
+     * @param payment o objeto PaymentScheduleModel a ser criado
+     * @return a ResponseEntity contendo o objeto PaymentScheduleModel criado
      */
     @PostMapping
     public ResponseEntity<PaymentScheduleModel> addPayment(@RequestBody @Valid PaymentScheduleModel payment) {

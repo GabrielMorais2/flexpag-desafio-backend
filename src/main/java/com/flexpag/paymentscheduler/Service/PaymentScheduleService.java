@@ -37,7 +37,6 @@ public class PaymentScheduleService {
     public List<PaymentScheduleModel> findAll(PaymentStatus status) {
         List<PaymentScheduleModel> paymentList = status != null ? paymentScheduleRepository.findAllByPaymentStatus(status)
                 : paymentScheduleRepository.findAll();
-
         return paymentList;
     }
 
