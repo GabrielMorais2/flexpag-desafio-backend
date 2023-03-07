@@ -1,3 +1,68 @@
+# SOLUÇÃO PROPOSTA PARA O DESAFIO FLEX PAG BACKEND
+
+O projeto consiste em uma API de agendamento de pagamento. A API possui um CRUD de pagamentos que atualiza os pagamentos agendados todos os dias às 00:00.
+
+Para inicializar o projeto, foi criado um DataInitializer com 3 pagamentos com status PENDING e 1 com status PAID para testes.
+
+## Intruções para uso da aplicação.
+
+Documentação no Swagger: http://localhost:8080/swagger-ui/index.html#/
+
+
+### GET - (Retorna todos os pagamentos)
+
+http://localhost:8080/payments/
+
+
+
+
+### GET com Parametro PAID | PENDING - (Retorna todos os elementos filtrando o status)
+
+http://localhost:8080/payments/?status={?}
+
+
+
+
+### GET com variável id - (Retorna apenas o elemento com id selecionado, caso não exista, lança um not found)
+
+http://localhost:8080/payments/{id}
+
+
+
+
+### POST - cria um novo pagamento mandando um json no corpo da requisição com valor e data. (Validando dados, caso não sejam validos, lança uma exceção)
+
+http://localhost:8080/payments/
+
+ex:    {
+       "date": "2023-03-21T23:32:32",
+       "amount": "323"
+       }
+       
+       
+       
+      
+### PUT - atualiza a data e hora do agendamento passando o ID como variavel. Obs: Só é possivel mudar os dados do agendamento caso ele esteja com status PENDING.
+
+http://localhost:8080/payments/{id}
+
+ex:    {
+       "date": "2023-03-21T23:32:32"
+       }
+
+
+
+
+### DELETE - deleta um agendamento passando o ID como variavel. Obs: Só e possivel deletar agendamento com status PENDING
+
+http://localhost:8080/payments/{id}
+
+
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
 <p align="center">
  <img src="https://github.com/jsantos-examples/flexpag-desafio-backend/blob/main/contents/flexpag.png" width="600" alt="Banner Flexpag">
 </p>
