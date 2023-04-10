@@ -4,7 +4,7 @@ O projeto consiste em uma API de agendamento de pagamento. A API possui um CRUD 
 
 Para inicializar o projeto, foi criado um DataInitializer com 3 pagamentos com status PENDING e 1 com status PAID para testes.
 
-## Intruções para uso da aplicação.
+## Instruções para uso da aplicação.
 
 Documentação no Swagger: http://localhost:8080/swagger-ui/index.html#/
 
